@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# if dev machine does not exists, create it
+
+# run the given npm command at it

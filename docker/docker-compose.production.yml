@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile
+    environment:
+      - VIRTUAL_HOST
+      - LETSENCRYPT_HOST
+      - LETSENCRYPT_EMAIL
+    ports:
+      - "${VIRTUAL_PORT}"
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
