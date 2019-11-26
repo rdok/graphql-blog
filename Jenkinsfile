@@ -15,9 +15,9 @@ pipeline {
            agent { label "rdok.dev" }
            steps { ansiColor('xterm') {
               sh '''#!/bin/bash
-                docker-compose -p . -f ./docker/docker-compose.yml build --pull
-                docker-compose -p . -f ./docker/docker-compose.yml down --remove-orphans
-                docker-compose -p . -f ./docker/docker-compose.yml up -d
+                docker-compose build --pull
+                docker-compose down --remove-orphans
+                docker-compose up -d
                '''
         } } }
         stage('Health Check') {

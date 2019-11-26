@@ -3,12 +3,13 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
+      dockerfile: Dockerfile
     environment:
       - VIRTUAL_PORT
       - VIRTUAL_HOST
       - LETSENCRYPT_HOST
       - LETSENCRYPT_EMAIL
+      - NODE_ENV=production
     ports:
       - "${VIRTUAL_PORT}"
 
