@@ -1,0 +1,33 @@
+{
+  "name": "graphql-blog",
+  "version": "1.0.0",
+  "description": "The client to the https://github.com/rdok/graphql-blog.api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdok/graphql-blog.git"
+  },
+  "keywords": [
+    "graphql",
+    "docker",
+    "docker-compose",
+    "jenkins",
+    "udemy",
+    "node",
+    "npm",
+    "prisma"
+  ],
+  "author": "Rizart Dokollari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rdok/graphql-blog/issues"
+  },
+  "homepage": "https://github.com/rdok/graphql-blog#readme",
+  "devDependencies": {
+    "parcel": "^1.12.4"
+  }
+}

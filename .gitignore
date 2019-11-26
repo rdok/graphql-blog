@@ -1,4 +1,7 @@
 .idea/
+.env
+dist/
+.cache/
 
 # Logs
 logs

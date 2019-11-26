@@ -1,14 +1,16 @@
 version: "3.7"
 
 services:
-  app:
+  workbench:
     image: node:12
     user: "node"
     working_dir: /home/node/app
+    container_name: graphql-blog_workbench
     environment:
       - NODE_ENV=local
+      - PORT
     volumes:
       - ".:/home/node/app"
     ports:
-      - "${VIRTUAL_PORT}:${VIRTUAL_PORT}"
+      - "${PORT}:${PORT}"
     command: tail -f /dev/null
