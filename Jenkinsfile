@@ -23,7 +23,7 @@ pipeline {
         stage('Health Check') {
             agent { label "linux" }
             options { skipDefaultCheckout() }
-            steps { build 'graphql-blog' }
+            steps { build 'client-health-check' }
         }
     }
     post {
