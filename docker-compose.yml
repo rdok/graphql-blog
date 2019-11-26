@@ -10,7 +10,7 @@ services:
       - LETSENCRYPT_HOST
       - LETSENCRYPT_EMAIL
       - NODE_ENV=production
-    ports:
+    expose:
       - "${VIRTUAL_PORT}"
 
 networks:
