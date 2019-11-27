@@ -30,9 +30,9 @@
   },
   "homepage": "https://github.com/rdok/graphql-blog#readme",
   "devDependencies": {
-    "parcel": "^1.12.4"
   },
   "dependencies": {
+    "parcel": "^1.12.4",
     "apollo-boost": "^0.4.4",
     "graphql": "^14.5.8",
     "react": "^16.12.0",
