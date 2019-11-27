@@ -4,6 +4,7 @@ pipeline {
     options { buildDiscarder( logRotator( numToKeepStr: '5' ) ) }
     environment {
         VIRTUAL_HOST = 'graphql-blog.rdok.dev'
+        GRAPHQL_BLOG_API_URL = 'https://api.graphql-blog.rdok.dev'
         VIRTUAL_PORT = '3008'
         LETSENCRYPT_HOST = 'graphql-blog.rdok.dev'
         LETSENCRYPT_EMAIL = credentials('rdok-email')
