@@ -7,7 +7,7 @@ PROJECT_DIR="$(
 )/.."
 
 docker-compose-react() {
-  --project-name graphql-blog-client \
+  docker-compose --project-name graphql-blog-client \
     --file "${PROJECT_DIR}/docker/docker-compose.yml" \
     --file "${PROJECT_DIR}/docker/docker-compose.production.yml" \
     "$@"
