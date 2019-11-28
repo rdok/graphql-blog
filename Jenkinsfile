@@ -1,28 +1,36 @@
 pipeline {
-    agent { label "rdok.dev" }
+    agent { label "linux" }
     triggers { cron('H H(18-19) * * *') }
     options { buildDiscarder( logRotator( numToKeepStr: '5' ) ) }
     environment {
         VIRTUAL_HOST = 'graphql-blog.rdok.dev'
         GRAPHQL_BLOG_API_URL = 'https://api.graphql-blog.rdok.dev'
         VIRTUAL_PORT = '3008'
-        LETSENCRYPT_HOST = 'graphql-blog.rdok.dev'
+        LETSENCRYPT_HOST = 'graphql-blog.rdok.dev'A
         LETSENCRYPT_EMAIL = credentials('rdok-email')
         DEFAULT_EMAIL = credentials('rdok-email')
         COMPOSE_PROJECT_NAME = 'graphql-blog'
     }
     stages {
-        stage('Deploy') {
+        stage('Test') {
+            steps {
+                sh '''#!/bin/bash
+                    docker run -e CI=true --rm -v $(pwd):/app -w /app \
+                        node:12-alpine sh -c "
+                            yarn install
+                            yarn run test  --coverage --coverageDirectory='./report' --ci
+                        "
+                '''
+            }
+        }
+        stage('Build & Deploy') {
            agent { label "rdok.dev" }
            steps { ansiColor('xterm') {
               sh '''#!/bin/bash
-                docker-compose build --pull
-                docker-compose down --remove-orphans
-                docker-compose up -d
+                ./docker/deploy.sh
                '''
         } } }
         stage('Health Check') {
-            agent { label "linux" }
             options { skipDefaultCheckout() }
             steps { build 'client-health-check' }
         }
@@ -38,6 +46,16 @@ pipeline {
         }
         success {
             slackSend message: "Deployed: <${env.BUILD_URL}console | ${env.JOB_NAME}#${env.BUILD_NUMBER}>"
+        }
+        always {
+            publishHTML([
+            allowMissing: false,
+            alwaysLinkToLastBuild: true,
+            keepAll: false,
+            reportFiles: 'index.html',
+            reportName: 'Coverage Report',
+            reportDir: 'report/lcov-report/'
+            ])
         }
     }
 }

@@ -1,43 +1,12 @@
-import ApolloClient, {gql} from 'apollo-boost'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from '../src/App';
+import * as serviceWorker from '../src/serviceWorker';
 
-const uri = process.env.GRAPHQL_BLOG_API_URL + "/graphql"
-const client = new ApolloClient({uri})
+ReactDOM.render(<App />, document.getElementById('root'));
 
-const query = gql`
-    query {
-        users {
-            id name
-        }
-        posts {
-            id title author { name }
-        }
-    }
-`
-
-client.query({query}).then(response => {
-    let html = ''
-
-    response.data.users.forEach((user) => {
-        html += `
-            <div>
-                ${user.name}
-            </div>
-        `
-    })
-
-    document.getElementById('users').innerHTML = html
-
-    html = ''
-    response.data.posts.forEach((post) => {
-        html += `
-            <div>
-                <div>
-                    Title: ${post.title}, Author: ${post.author.name}
-                </div>
-            </div>
-        `
-    })
-    document.getElementById('posts').innerHTML = html
-
-})
-
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

@@ -1,16 +1,11 @@
 version: "3.7"
+
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  react:
     environment:
-      - VIRTUAL_PORT
-      - VIRTUAL_HOST
       - LETSENCRYPT_HOST
       - LETSENCRYPT_EMAIL
       - NODE_ENV=production
-      - GRAPHQL_BLOG_API_URL
 
 networks:
   default:
