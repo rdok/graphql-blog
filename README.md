@@ -1,4 +1,7 @@
 # Graphql-Blog
+
+[![Build Status](https://jenkins.rdok.dev/buildStatus/icon?job=graphql-blog%2Fclient)](https://jenkins.rdok.dev/job/graphql-blog/job/client/)
+
 The client of https://github.com/rdok/graphql-blog.api
 
 ## Dev
@@ -13,11 +16,11 @@ development dependency. By running in a detached state, and sharing the source
 code with it, we achieve a maximum performance.
 
 Usages:
-- $ `./workbench.sh npm install {package} --save`
+- $ `./workbench.sh yarn install {package} --save`
 - $ `./workbench.sh node --version`
 
 #### Web Server
-$ `./workbench.sh npm start`
+$ `./workbench.sh yarn start`
 
 The .env.example has sensible defaults for the port used by parcel. You can
 modify the port if there is a conflict in your local machine. 
