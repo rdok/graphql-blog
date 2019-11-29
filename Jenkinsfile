@@ -4,12 +4,12 @@ pipeline {
     options { buildDiscarder( logRotator( numToKeepStr: '5' ) ) }
     environment {
         VIRTUAL_HOST = 'graphql-blog.rdok.dev'
-        GRAPHQL_BLOG_API_URL = 'https://api.graphql-blog.rdok.dev'
         VIRTUAL_PORT = '3008'
+        GRAPHQL_BLOG_API_URL = 'https://api.graphql-blog.rdok.dev'
         LETSENCRYPT_HOST = 'graphql-blog.rdok.dev'
         LETSENCRYPT_EMAIL = credentials('rdok-email')
         DEFAULT_EMAIL = credentials('rdok-email')
-        COMPOSE_PROJECT_NAME = 'graphql-blog'
+        DOCKER_COMPOSE_PROJECT_NAME = 'graphql-blog-client'
     }
     stages {
         stage('Test') {

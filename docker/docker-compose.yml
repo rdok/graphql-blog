@@ -4,3 +4,7 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+    environment:
+      - VIRTUAL_HOST
+      - VIRTUAL_PORT
+      - DOCKER_COMPOSE_PROJECT_NAME
