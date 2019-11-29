@@ -5,7 +5,7 @@ pipeline {
     environment {
         VIRTUAL_HOST = 'graphql-blog.rdok.dev'
         VIRTUAL_PORT = '3008'
-        REACT_APP_RAPHQL_BLOG_API_URL = 'https://api.graphql-blog.rdok.dev'
+        REACT_APP_GRAPHQL_BLOG_API_URL = 'https://api.graphql-blog.rdok.dev'
         LETSENCRYPT_HOST = 'graphql-blog.rdok.dev'
         LETSENCRYPT_EMAIL = credentials('rdok-email')
         DEFAULT_EMAIL = credentials('rdok-email')

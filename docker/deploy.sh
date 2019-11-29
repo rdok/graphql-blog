@@ -18,4 +18,3 @@ docker-compose-react() {
 docker-compose-react build --pull
 docker-compose-react down --remove-orphans
 docker-compose-react up -d
-

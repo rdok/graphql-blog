@@ -5,7 +5,7 @@ import App from './App/App';
 import * as serviceWorker from '../src/serviceWorker';
 import ApolloClient from 'apollo-boost'
 
-const uri = process.env.REACT_APP_RAPHQL_BLOG_API_URL + "/graphql"
+const uri = process.env.REACT_APP_GRAPHQL_BLOG_API_URL + "/graphql"
 const apolloClient = new ApolloClient({uri})
 
 ReactDOM.render(<App apolloClient={apolloClient} />, document.getElementById('root'));

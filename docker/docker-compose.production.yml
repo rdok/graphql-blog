@@ -2,11 +2,15 @@ version: "3.7"
 
 services:
   react:
+    build:
+      args:
+        - REACT_APP_GRAPHQL_BLOG_API_URL
     environment:
       - LETSENCRYPT_HOST
       - LETSENCRYPT_EMAIL
       - DEFAULT_EMAIL
       - NODE_ENV=production
+      - PUBLIC_URL
 
 networks:
   default:
