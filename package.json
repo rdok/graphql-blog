@@ -6,9 +6,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "production": "node run dist/index.",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
