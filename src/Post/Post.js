@@ -4,7 +4,6 @@ import {gql} from 'apollo-boost'
 export default class Post extends React.Component {
 
     apolloClient
-
     query = gql`
         query {
             posts {
@@ -20,14 +19,18 @@ export default class Post extends React.Component {
     }
 
     componentDidMount() {
-        this.apolloClient.query({query: this.query}).then((response) => {
-            this.setState({posts: response.data.posts})
-        })
-}
+        this.apolloClient.query({query: this.query})
+            .then((response) => {
+                if (!response || !response.data || !response.data.posts) {
+                    return
+                }
+                this.setState({posts: response.data.posts})
+            })
+    }
 
     render() {
         const posts = this.state.posts.map(post => (
-            <div key={post.id}>
+            <div key={post.id} data-testid={post.id}>
                 {post.title}, by {post.author.name}
             </div>
         ))
